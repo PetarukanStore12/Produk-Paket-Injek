@@ -99,6 +99,40 @@ body.dark .drawer-close{background:#3a3a3a;color:#e5e7eb}
 .app-icons{display:flex;justify-content:center;align-items:center;gap:14px;margin:6px 0 12px}
 .app-icons a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
 .app-icons img{width:46px;height:46px;border-radius:10px;display:block}
+/* ✅ Biar modal nota pas di tengah & tidak tumpang tindih produk di belakang */
+#notaModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#notaModal .nota-sheet {
+  margin-top: 60px; /* posisi turun sedikit biar tidak nutup header */
+  max-height: 85vh; /* biar tidak terlalu tinggi */
+  overflow-y: auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+/* ✅ Rapikan grid icon download biar sejajar */
+.app-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  gap: 12px;
+  justify-items: center;
+  margin-top: 8px;
+}
+
+.app-icons img {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  transition: transform 0.2s;
+}
+
+.app-icons img:hover {
+  transform: scale(1.08);
+}
+
 
  /* ✅ Biar kotak nota tidak terlalu ke atas (posisi tengah sempurna) */
 #notaModal .nota-sheet {
