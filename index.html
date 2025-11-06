@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Petarukan Store - Produk Injek</title>
+<title>Katalog Provider - Petarukan Store (Nota Fix)</title>
 <style>
 :root{
   --bg:#ffffff; --text:#111827; --muted:#555;
@@ -96,70 +96,9 @@ body.dark .drawer-close{background:#3a3a3a;color:#e5e7eb}
 .nota-content{text-align:left;margin:8px 0 12px}
 .nota-content ul{margin:6px 0 10px 18px}
 .center-label{margin-top:10px;font-weight:800;text-align:center}
-.app-icons {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(65px, 1fr)); /* agak kecil & rata */
-  gap: 8px; /* jarak antar icon lebih rapat */
-  justify-items: center;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.app-icons img {
-  width: 45px;
-  height: 45px;
-  border-radius: 10px;
-  transition: transform 0.2s ease;
-}
-
-.app-icons img:hover {
-  transform: scale(1.06);
-}
-/* ✅ Biar modal nota pas di tengah & tidak tumpang tindih produk di belakang */
-#notaModal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#notaModal .nota-sheet {
-  margin-top: 60px; /* posisi turun sedikit biar tidak nutup header */
-  max-height: 85vh; /* biar tidak terlalu tinggi */
-  overflow-y: auto;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-}
-
-/* ✅ Rapikan grid icon download biar sejajar */
-.app-icons {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-  gap: 12px;
-  justify-items: center;
-  margin-top: 8px;
-}
-
-.app-icons img {
-  width: 52px;
-  height: 52px;
-  border-radius: 12px;
-  transition: transform 0.2s;
-}
-
-.app-icons img:hover {
-  transform: scale(1.08);
-}
-
-
- /* ✅ Biar kotak nota tidak terlalu ke atas (posisi tengah sempurna) */
-#notaModal .nota-sheet {
-  margin-top: 40px; /* jarak dari atas layar */
-}
-
-@media (max-height: 700px) {
-  #notaModal .nota-sheet {
-    margin-top: 20px; /* kalau layar kecil (HP), jaraknya lebih kecil */
-  }
-} 
+.app-icons{display:flex;justify-content:center;align-items:center;gap:14px;margin:6px 0 12px}
+.app-icons a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
+.app-icons img{width:46px;height:46px;border-radius:10px;display:block}
 
 /* FOOTER */
 .footer{background:var(--primary);color:#fff;text-align:center;font-size:12px;padding:10px 0}
@@ -168,50 +107,6 @@ body.dark .drawer-close{background:#3a3a3a;color:#e5e7eb}
 .toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.85);color:#fff;padding:10px 18px;border-radius:12px;font-size:14px;font-weight:600;animation:fadein .3s,fadeout .3s 1.8s;z-index:999}
 @keyframes fadein{from{opacity:0;transform:translate(-50%,-60%)}to{opacity:1;transform:translate(-50%,-50%)}}
 @keyframes fadeout{from{opacity:1}to{opacity:0}}
-  /* ✅ PERBAIKAN TAMPILAN BAGIAN NOTA */
-.nota-section {
-  margin: 18px 0 10px;
-  text-align: left;
-}
-
-.center-label {
-  margin-top: 16px;
-  text-align: center;
-  font-weight: 700;
-}
-
-/* ✅ Jarak antar icon dan teks biar imbang */
-.app-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
-  margin: 10px 0 20px;
-}
-
-/* ✅ Tampilan link diperhalus */
-a {
-  color: #BBDEFB; /* biru lembut */
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-/* ✅ Rapiin jarak bagian “SILAHKAN DOWNLOAD APK” dan “Tutorial Cara Pakai” */
-.nota-sheet .center-label:first-of-type {
-  margin-top: 18px;
-}
-
-.nota-sheet .tutorial-section {
-  margin-top: 20px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(255,255,255,0.2);
-}
 </style>
 </head>
 <body>
