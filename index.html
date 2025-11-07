@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Katalog Provider - Petarukan Store</title>
+<title>Katalog Provider - Petarukan Store (Nota Fix)</title>
 <style>
 :root{
   --bg:#ffffff; --text:#111827; --muted:#555;
@@ -26,6 +26,7 @@ body{
   background:#F6F7FB;
   margin:0;color:var(--text);
 }
+
 /* HEADER */
 .header{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.92);border-bottom:1px solid #e5e7eb;padding:10px 44px;text-align:center}
 body.dark .header{background:rgba(18,18,18,.92);border-color:#2a2a2a}
@@ -34,14 +35,28 @@ body.dark .header{background:rgba(18,18,18,.92);border-color:#2a2a2a}
 .menu-btn{position:absolute;left:12px;top:7px;width:36px;height:36px;border-radius:10px;border:1px solid #5da3e0;background:transparent;color:#5da3e0;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .menu-icon span{display:block;width:18px;height:2px;background:currentColor;margin:3px 0;border-radius:2px}
 .theme-toggle{position:absolute;right:58px;top:7px;width:30px;height:30px;border-radius:999px;border:1px solid #8ab4f8;color:#8ab4f8;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer}
-/* CART */
+
+/* CART ICON */
 .cart-container{position:absolute;right:14px;top:7px;cursor:pointer}
 .cart-svg{width:30px;height:30px}
 .cart-badge{position:absolute;top:-6px;right:-8px;background:#d32f2f;color:#fff;font-weight:800;font-size:12px;min-width:20px;height:20px;border-radius:999px;display:flex;align-items:center;justify-content:center}
+
+/* SIDEBAR */
+.drawer-overlay{position:fixed;inset:0;background:var(--overlay);display:none;z-index:190}
+.drawer{position:fixed;left:0;top:0;height:100vh;width:270px;background:var(--card);box-shadow:3px 0 15px rgba(0,0,0,.3);transform:translateX(-100%);transition:transform .3s ease;z-index:191;padding:16px 14px}
+.drawer.open{transform:translateX(0)}
+.drawer-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.drawer-title{font-weight:900;color:var(--primary)}
+.drawer-close{border:none;background:#eee;border-radius:10px;width:30px;height:30px;font-weight:800;cursor:pointer}
+body.dark .drawer-close{background:#3a3a3a;color:#e5e7eb}
+.drawer nav a{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;text-decoration:none;color:var(--text);font-weight:700;margin-top:8px}
+.drawer nav a:hover{background:rgba(0,0,0,.06)}
+
 /* MARQUEE */
 .marquee{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff;font-weight:700;font-size:13px;padding:6px 0;overflow:hidden;white-space:nowrap}
 .marquee-content{display:inline-block;padding-left:100%;animation:marquee 15s linear infinite}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+
 /* GRID PRODUK */
 .produk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;padding:15px}
 .card{background:var(--card);border-radius:18px;box-shadow:0 4px 10px var(--card-shadow);overflow:hidden;cursor:pointer;transition:.25s}
@@ -51,102 +66,1053 @@ body.dark .header{background:rgba(18,18,18,.92);border-color:#2a2a2a}
 .card-content h3{font-size:15px;font-weight:700;margin:6px 0;color:var(--text)}
 .card-content p{font-size:12px;color:var(--muted);margin:3px 0}
 .card-content .harga{color:#d32f2f;font-weight:800;font-size:13px}
-/* NOTA MODAL */
-#notaModal {
-  background: rgba(0,0,0,0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-.nota-sheet {
-  background: var(--notePurple);
-  color: #fff;
-  border-radius: 20px;
-  padding: 20px;
-  max-width: 380px;
-  width: 90%;
-  max-height: 80vh;
-  overflow-y: auto;
-  position: relative;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-  margin-top: 40px;
-}
-.nota-close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: #e0e0e0;
-  border: none;
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
-  cursor: pointer;
-  font-weight: bold;
-}
-.app-icons {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(65px, 1fr));
-  gap: 10px;
-  justify-items: center;
-  align-items: center;
-  width: 90%;
-  margin: 10px auto 20px;
-}
-.app-icons img {
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
-  transition: transform 0.2s ease;
-}
-.app-icons img:hover { transform: scale(1.08); }
+
+/* MODALS GENERIC */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);justify-content:center;align-items:center;z-index:180;padding:20px}
+.modal-inner{background:var(--card);border-radius:15px;padding:20px;max-width:340px;width:100%;text-align:center;position:relative;color:var(--text)}
+.close-btn{position:absolute;top:10px;right:10px;background:#ccc;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer}
+
+/* MODAL PRODUK */
+.modal-inner img{width:120px;height:120px;object-fit:contain}
+.btn{flex:1;padding:10px 0;border:none;border-radius:10px;font-weight:800;cursor:pointer;font-size:14px}
+.btn-keranjang{background:var(--success);color:var(--buttonText)}
+.btn-order{background:var(--primary);color:var(--buttonText)}
+.btn-detail{width:100%;background:linear-gradient(90deg,#e91e63,#9c27b0,#3f51b5);color:#fff;border:none;border-radius:10px;padding:10px 0;margin-top:12px;font-weight:800}
+
+/* CART */
+.cart-list{max-height:45vh;overflow:auto;margin:10px 0}
+.item-row{display:flex;align-items:center;justify-content:space-between;background:var(--bg);border-radius:10px;padding:10px 12px;margin:8px 0;box-shadow:0 1px 4px var(--card-shadow)}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:28px;height:28px;border-radius:8px;border:none;background:#1e88e5;color:#fff;font-weight:900;cursor:pointer}
+.total{font-weight:900;color:#d32f2f;margin:12px 0}
+
+/* NOTA */
+#notaModal{background:rgba(0,0,0,.6)}
+.nota-sheet{background:var(--notePurple);color:#fff;border-radius:20px;padding:20px;max-width:380px;width:90%;margin:auto;overflow-y:auto;max-height:85vh;position:relative;text-align:center}
+.nota-close{position:absolute;top:10px;right:10px;background:#e0e0e0;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer}
+.nota-title{margin:8px 0 4px;font-weight:800}
+.nota-price{font-weight:900;margin:6px 0 10px}
+.nota-img{width:110px;height:110px;object-fit:contain;margin:4px auto 6px;display:block;background:#fff;border-radius:14px;padding:8px}
+.nota-content{text-align:left;margin:8px 0 12px}
+.nota-content ul{margin:6px 0 10px 18px}
+.center-label{margin-top:10px;font-weight:800;text-align:center}
+.app-icons{display:flex;justify-content:center;align-items:center;gap:14px;margin:6px 0 12px}
+.app-icons a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
+.app-icons img{width:46px;height:46px;border-radius:10px;display:block}
+
 /* FOOTER */
 .footer{background:var(--primary);color:#fff;text-align:center;font-size:12px;padding:10px 0}
+
+/* TOAST */
+.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.85);color:#fff;padding:10px 18px;border-radius:12px;font-size:14px;font-weight:600;animation:fadein .3s,fadeout .3s 1.8s;z-index:999}
+@keyframes fadein{from{opacity:0;transform:translate(-50%,-60%)}to{opacity:1;transform:translate(-50%,-50%)}}
+@keyframes fadeout{from{opacity:1}to{opacity:0}}
 </style>
 </head>
 <body>
+
+<!-- MUSIK AUTOPLAY (hidden) -->
+<audio id="bgm" src="https://petarukanstore12.github.io/kumpulan-file-link-online/Bernadya - Untungnya.mp3" preload="auto" autoplay loop></audio>
+
+<!-- SIDEBAR -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <div class="drawer-title">☰ Menu</div>
+    <button class="drawer-close" id="btnCloseDrawer">×</button>
+  </div>
+  <nav>
+    <a href="#home">🏠 Beranda</a>
+    <a href="#catalog">🛒 Katalog Paket Provider</a>
+    <a href="#game">🎮 Voucher Game</a>
+    <a href="#about">💡 Tentang Kami</a>
+    <a href="https://wa.me/6285643838017" target="_blank">☎️ Hubungi Admin</a>
+  </nav>
+</div>
+
 <!-- HEADER -->
-<div class="header">
+<div class="header" id="home">
+  <button class="menu-btn" id="btnOpenDrawer" aria-label="Buka menu">
+    <div class="menu-icon"><span></span><span></span><span></span></div>
+  </button>
   <h1>PAKET INJEK</h1>
   <p>Katalog Paket Provider</p>
+  <button class="theme-toggle" id="themeToggle">🌙</button>
+  <div class="cart-container" id="btnOpenCart">
+    <svg class="cart-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#5da3e0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="21" r="1.2"></circle>
+      <circle cx="20" cy="21" r="1.2"></circle>
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+    </svg>
+    <span id="cart-count" class="cart-badge">0</span>
+  </div>
 </div>
-<div class="marquee"><div class="marquee-content">💥 Promo Spesial! Kuota murah, aman, dan terpercaya hanya di Petarukan Store 💥</div></div>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-content">
+    <span id="datetime"></span> — 💥 Promo Spesial! Kuota murah, aman, dan terpercaya hanya di Petarukan Store 💥
+  </div>
+</div>
+
+<!-- GRID PRODUK -->
 <div class="produk-grid" id="produkGrid"></div>
-<!-- MODAL NOTA -->
-<div class="modal" id="notaModal">
-  <div class="nota-sheet">
-    <button class="nota-close" id="closeNota">×</button>
-    <img class="nota-img" id="notaImg" src="" alt="">
-    <h3 id="notaNama">Nama Paket</h3>
-    <div id="notaHarga" style="font-weight:bold;margin-bottom:10px;">Rp 0</div>
-    <div id="notaContent" style="text-align:left;line-height:1.6;font-size:14px;margin:10px 0;"></div>
-    <div class="center-label">📥 SILAHKAN DOWNLOAD APK:</div>
-    <div class="app-icons">
-      <a href="#"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/download-29.png"></a>
-      <a href="#"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/download-29.png"></a>
-      <a href="#"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/download-29.png"></a>
+
+<!-- MODAL PRODUK -->
+<div class="modal" id="detailModal" aria-hidden="true">
+  <div class="modal-inner">
+    <button class="close-btn" id="closeDetail">×</button>
+    <img id="modalImg" src="" alt="">
+    <h2 id="modalNama"></h2>
+    <p id="modalDeskripsi" style="color:var(--muted)"></p>
+    <p class="harga" id="modalHarga" style="font-weight:900;color:#d32f2f"></p>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:8px">
+      <button class="btn btn-keranjang" id="btnAddCart">Tambah Keranjang</button>
+      <button class="btn btn-order" id="btnOrder">Klik Order</button>
+    </div>
+    <button class="btn-detail" id="btnDetail">DETAIL</button>
+  </div>
+</div>
+
+<!-- MODAL CART -->
+<div class="modal" id="cartModal" aria-hidden="true">
+  <div class="modal-inner" style="max-width:380px">
+    <button class="close-btn" id="closeCart">×</button>
+    <h3 style="margin:6px 0 10px">🛒 Keranjang Saya</h3>
+    <div class="cart-list" id="cartList"></div>
+    <div class="total">💰 Total: <span id="cartTotal">Rp 0</span></div>
+    <div style="display:flex;gap:10px;justify-content:center">
+      <button class="btn" id="btnClearCart" style="background:#e53935;color:#fff">Hapus Semua</button>
+      <button class="btn" id="btnSendWA" style="background:#2e7d32;color:#fff">Kirim ke WhatsApp</button>
     </div>
   </div>
 </div>
+
+<!-- MODAL NOTA DETAIL -->
+<div class="modal" id="notaModal" aria-hidden="true">
+  <div class="nota-sheet">
+    <button class="nota-close" id="closeNota">×</button>
+    <img class="nota-img" id="notaImg" src="" alt="">
+    <h3 class="nota-title" id="notaNama">Nama Paket</h3>
+    <div class="nota-price" id="notaHarga">Rp 0</div>
+
+    <!-- HANYA SATU BLOK DINAMIS (tidak ada duplikat statis) -->
+    <div id="notaContent" class="nota-content"></div>
+
+    <div class="center-label">📥 SILAHKAN DOWNLOAD APK INJEK :</div>
+    <div class="center-label">🔹 Khusus Android</div>
+    <div class="app-icons">
+      <a href="https://play.google.com/store/apps/details?id=xyz.easypro.httpcustom" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-httpcustom.png" alt="HC" style="width:65px;height:60px;"</a>
+      <a href="https://play.google.com/store/apps/details?id=net.darktunnel.app" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-darktunnel.png" alt="Dark" style="width:55px;height:60px;"</a>
+      <a href="https://play.google.com/store/apps/details?id=io.nekohasekai.sfa" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logosingbox-1.png" alt="Dark" style="width:65px;height:60px;"</a>
+      <a href="#" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-v2ray-1.png" alt="Dark" style="width:50px;height:50px;" </a>
+    </div>
+     <div class="app-icons">
+  <a href="https://play.google.com/store/apps/details?id=app.hiddify.com" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-hiddify.png" alt="HC" style="width:50px;height:50px;" </a>
+    <a href="https://play.google.com/store/apps/details?id=com.v2cross.proxy" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-shadorocket.png" alt="Dark" style="width:55px;height:50px;" </a>
+      <a href="#" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-openclash.png" alt="Dark" style="width:50px;height:50px;" </a>
+        <a href="#" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-kentangclash.png" alt="Dark" style="width:50px;height:50px;" </a>
+</div>
+    <div class="center-label">🔹 Khusus iPhone</div>
+    <div class="app-icons">
+      <a href="https://play.google.com/store/apps/details?id=net.darktunnel.app" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logosingbox-1.png" alt="Dark" style="width:65px;height:60px;"</a>
+    </div>
+    <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      💡 Tutorial Cara Pakai :
+      <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+  <li style="font-weight: 400;">Menggunakan HTTP Custom : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan DarkTunnel : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan SingBox : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan V2Ray : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan Hiddify : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan Shadorocket : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan OpenClash : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan KentangClash : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+    Jika Masih Bingung,Bisa Hubungi Admin ✅
+    </div>
+    <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:600;">
+   📢 Video Tutorial.nya (Coming Soon)
+    </div>
+    <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+  💰 Cara Pembelian :
+</div>
+  <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+   <li>Cek Stok Terlebih Dahulu</li>
+   <li>Jika Stok Ready, Langsung Klik Order / Tambah Keranjang Lalu Kirim ke Whatsapp Admin.</li>
+   <li>Jam Kerja : 07:00 - 22.30 WIB</li>
+   <li>Payment : DANA, QRIS, BANK, DLL</li>
+  🥳 Yuk Gasken Juragan!! 
+  </div>
+</div>
+
+<!-- FOOTER -->
 <div class="footer">© 2025 Petarukan Store | Kuota Murah, Aman & Terpercaya</div>
+
 <script>
-const produkList=[
-{nama:"Telkomsel Internet 15GB",harga:65000,gambar:"https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/oip.jpeg",detail:"Kuota Nasional 15GB • Masa aktif 30 hari"},
-{nama:"Axis Unlimited 12GB",harga:52000,gambar:"https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/oip.jpeg",detail:"Kuota 12GB + Unlimited App • Masa aktif 30 hari"},
-{nama:"by.U 20GB",harga:70000,gambar:"https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/oip.jpeg",detail:"Kuota utama 20GB • Masa aktif 30 hari"},
-{nama:"IM3 Freedom 18GB",harga:60000,gambar:"https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/oip.jpeg",detail:"Kuota utama 18GB + Unlimited App"},
-{nama:"Tri 25GB Super",harga:58000,gambar:"https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/oip-2-1.jpeg",detail:"Kuota 25GB semua jaringan • Masa aktif 30 hari"}
+/* Musik autoplay */
+const audio = document.getElementById('bgm');
+audio.volume = 0.4;
+function tryPlay(){ audio.play().catch(()=>{}); }
+document.addEventListener('DOMContentLoaded', tryPlay);
+window.addEventListener('load', tryPlay);
+document.addEventListener('click', function once(){ tryPlay(); document.removeEventListener('click', once); }, {once:true});
+
+/* Data Produk dengan detailNota unik */
+const nomorWA_owner = "6285643838017";
+const produkList = [
+  { 
+    nama: "XL Edukasi 2 GB", 
+    deskripsi: "Kuota Kebutuhan Harian • Masa aktif 1 hari", 
+    harga: 3000, 
+    gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/oip.jpeg",
+    detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi Bergaransi</li>
+         <li>Masa Aktif 1 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 2 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+  },
+  {
+  nama: "XL Edukasi 5 GB",
+  deskripsi: "Kuota Kebutuhan Harian • Masa aktif 3 hari",
+  harga: 4500,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/oip.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi Bergaransi</li>
+         <li>Masa Aktif 3 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 5 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+  {
+  nama: "XL Edukasi 15 GB",
+  deskripsi: "Kuota Kebutuhan Mingguan • Masa aktif 7 hari",
+  harga: 13000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/oip.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi Bergaransi</li>
+         <li>Masa Aktif 7 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 15 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+  {
+  nama: "XCVIP DBYT 29 Hari",
+  deskripsi: "Kuota Kebutuhan Bulanan • Masa aktif 29 hari",
+  harga: 75000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/oip.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 29 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 4000 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+  {
+  nama: "BIZ Lite 28 Hari",
+  deskripsi: "Kuota Kebutuhan Bulanan • Masa aktif 28 hari",
+  harga: 50000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/oip.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 28 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota ± 350 GB</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "BIZ Starter 28 Hari",
+  deskripsi: "Kuota Kebutuhan Bulanan • Masa aktif 28 hari",
+  harga: 62000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/oip.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 28 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota ± 450 GB</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "BIZ E-Commerce",
+  deskripsi: "Kuota Kebutuhan Bulanan • Masa aktif 29 hari",
+  harga: 62000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/oip.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 29 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota ± 500 GB</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Vidi Beats",
+  deskripsi: "Kuota Kebutuhan Bulanan • Masa aktif 29 hari",
+  harga: 62000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/oip.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 29 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota ± 500 GB</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Tembak Masa Aktif 1 Tahun",
+  deskripsi: "Tembak Masa Aktif Kartu • Masa Aktif 1 Tahun",
+  harga: 20000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/oip.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Menambah Masa Aktif 1 Tahun Jadi Setiap Bulan Menambah Otomatis, Tidak Langsung 1 Tahun</li>
+         <li>Masa Aktif 365 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Proses Cepat</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Tembak Masa Aktif 1 Bulan",
+  deskripsi: "Kuota Kebutuhan Bulanan • Masa aktif 28 hari",
+  harga: 8000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/oip.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 28 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota ± 450 GB</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Booster Edukasi 2 GB",
+  deskripsi: "Kuota Kebutuhan Harian • Masa aktif 1 Hari",
+  harga: 3500,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-axis.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 1 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 2 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Booster Edukasi 5 GB",
+  deskripsi: "Kuota Kebutuhan Mingguan • Masa aktif 7 hari",
+  harga: 8500,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-axis.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 7 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 5 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Booster Edukasi 15 GB",
+  deskripsi: "Kuota Kebutuhan Mingguan • Masa aktif 7 hari",
+  harga: 20000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-axis.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 7 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 15 GB</li>
+         <li>Suport Semua Area</>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Booster Conference 2 GB",
+  deskripsi: "Kuota Kebutuhan Harian • Masa aktif 1 hari",
+  harga: 3500,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-axis.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 1 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 2 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Booster Conference 5 GB",
+  deskripsi: "Kuota Kebutuhan Mingguan • Masa aktif 7 hari",
+  harga: 8500,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-axis.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 7 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 5 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Booster Conference 5 GB",
+  deskripsi: "Kuota Kebutuhan Mingguan • Masa aktif 7 hari",
+  harga: 20000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-axis.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 7 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 15 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Freedom App Fun 12 GB",
+  deskripsi: "Kuota Kebutuhan Bulanan • Masa aktif 30 hari",
+  harga: 25000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-indosat.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 30 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 12 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Freedom App TikTok 5 GB",
+  deskripsi: "Kuota Kebutuhan Harian • Masa aktif 5 hari",
+  harga: 13000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-indosat.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 5 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 5 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Freedom App TikTok 3 GB",
+  deskripsi: "Kuota Kebutuhan Harian • Masa aktif 7 hari",
+  harga: 13000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-indosat.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 7 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 3 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Freedom App TikTok 2 GB",
+  deskripsi: "Kuota Kebutuhan Harian • Masa aktif 1 hari",
+  harga: 7000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-indosat.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 1 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 2 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Freedom App TikTok 5 GB",
+  deskripsi: "Kuota Kebutuhan Harian • Masa aktif 7 hari",
+  harga: 17000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-indosat.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 7 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 5 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Freedom App YouTube 3 GB",
+  deskripsi: "Kuota Kebutuhan Harian • Masa aktif 3 hari",
+  harga: 10000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-indosat.jpeg",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 3 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 3 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Unlimited IG",
+  deskripsi: "Kuota Kebutuhan Harian • Masa aktif 1 hari",
+  harga: 5000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-tri.webp",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 1 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 15 GB</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Unlimited FreeFire",
+  deskripsi: "Kuota Kebutuhan Harian • Masa aktif 1 hari",
+  harga: 5000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-tri.webp",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 1 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 15 GB</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Unlimited WA & Line",
+  deskripsi: "Kuota Kebutuhan Harian • Masa aktif 1 hari",
+  harga: 5000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-tri.webp",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 1 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 15 GB</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Unlimited Youtube",
+  deskripsi: "Kuota Kebutuhan Harian • Masa aktif 1 hari",
+  harga: 8000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-tri.webp",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 1 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 15 GB</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Unlimited Netflix",
+  deskripsi: "Kuota Kebutuhan Harian • Masa aktif 1 hari",
+  harga: 8000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-tri.webp",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 1 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 15 GB</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Unlimited TikTok",
+  deskripsi: "Kuota Kebutuhan Harian • Masa aktif 1 hari",
+  harga: 5000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-tri.webp",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 1 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 15 GB</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "IlmuPedia 11 GB",
+  deskripsi: "Kuota Kebutuhan Mingguan • Masa aktif 7 hari",
+  harga: 15000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-telkomsel.webp",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 7 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 11 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "IlmuPedia 2 GB",
+  deskripsi: "Kuota Kebutuhan Mingguan • Masa aktif 3 hari",
+  harga: 7000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-telkomsel.webp",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 3 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 2 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "IlmuPedia 22 GB",
+  deskripsi: "Kuota Kebutuhan Mingguan • Masa aktif 7 hari",
+  harga: 17000,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-telkomsel.webp",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 7 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota 22 GB</li>
+         <li>Suport Semua Area</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Byu Unlimited V1",
+  deskripsi: "Kuota Kebutuhan Bulanan • Masa aktif 28 hari",
+  harga: 0,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-byu.png",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 28 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota ± 450 GB</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Byu Unlimited V2",
+  deskripsi: "Kuota Kebutuhan Bulanan • Masa aktif 28 hari",
+  harga: 0,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-byu.png",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 28 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota ± 450 GB</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Smarfreen V1",
+  deskripsi: "Kuota Kebutuhan Bulanan • Masa aktif 28 hari",
+  harga: 0,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-smartfren.png",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 28 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota ± 450 GB</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
+{
+  nama: "Smartfreen V2",
+  deskripsi: "Kuota Kebutuhan Bulanan • Masa aktif 28 hari",
+  harga: 0,
+  gambar: "https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-smartfren.png",
+  detailNota: `
+      <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      📘  Detail Paket :
+      </div>
+       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+         <li>Paket Resmi legal</li>
+         <li>Masa Aktif 28 Hari</li>
+         <li>Perlu OTP</li>
+         <li>Total Kuota ± 450 GB</li>
+         <li>Menggunakan Aplikasi Injek</li
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+ </ul>
+`,
+},
 ];
-const produkGrid=document.getElementById("produkGrid"),notaModal=document.getElementById("notaModal"),notaImg=document.getElementById("notaImg"),notaNama=document.getElementById("notaNama"),notaHarga=document.getElementById("notaHarga"),notaContent=document.getElementById("notaContent"),closeNota=document.getElementById("closeNota");
-produkList.forEach(p=>{
-  const card=document.createElement("div");
-  card.className="card";
-  card.innerHTML=`<img src="${p.gambar}" alt="${p.nama}"><div class='card-content'><h3>${p.nama}</h3><p>${p.detail}</p><div class='harga'>Rp ${p.harga.toLocaleString('id-ID')}</div></div>`;
-  card.onclick=()=>{notaImg.src=p.gambar;notaNama.textContent=p.nama;notaHarga.textContent="Rp "+p.harga.toLocaleString('id-ID');notaContent.innerHTML=p.detail;notaModal.style.display="flex";};
+
+/* Render Produk */
+const produkGrid = document.getElementById("produkGrid");
+produkList.forEach((p,idx)=>{
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <img src="${p.gambar}" alt="${p.nama}">
+    <div class="card-content">
+      <h3>${p.nama}</h3>
+      <p>${p.deskripsi}</p>
+      <div class="harga">Rp ${p.harga.toLocaleString('id-ID')}</div>
+    </div>`;
+  card.addEventListener("click",()=>openDetail(idx));
   produkGrid.appendChild(card);
 });
-closeNota.onclick=()=>notaModal.style.display="none";
+
+/* Sidebar Toggle */
+const drawer=document.getElementById('drawer');
+const overlay=document.getElementById('drawerOverlay');
+const btnDrawer=document.getElementById('btnOpenDrawer');
+let drawerOpen=false;
+btnDrawer.onclick=function(){
+  drawerOpen=!drawerOpen;
+  drawer.classList.toggle('open',drawerOpen);
+  overlay.style.display=drawerOpen?'block':'none';
+};
+document.getElementById('btnCloseDrawer').onclick=function(){
+  drawer.classList.remove('open');overlay.style.display='none';drawerOpen=false;
+};
+overlay.onclick=function(){ drawer.classList.remove('open');overlay.style.display='none';drawerOpen=false; };
+
+/* Dark mode */
+const themeBtn=document.getElementById('themeToggle');
+const saved=localStorage.getItem('petarukan-theme');
+if(saved==='dark'){document.body.classList.add('dark');themeBtn.textContent='☀️';}
+themeBtn.addEventListener('click',()=>{
+  const isDark=document.body.classList.toggle('dark');
+  themeBtn.textContent=isDark?'☀️':'🌙';
+  localStorage.setItem('petarukan-theme',isDark?'dark':'light');
+});
+
+/* Date time */
+function updateDateTime(){
+  const n=new Date();
+  const d=n.toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  const t=n.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  document.getElementById('datetime').textContent=`${d} ${t}`;
+}
+setInterval(updateDateTime,1000);updateDateTime();
+
+/* Detail Modal */
+const detailModal=document.getElementById('detailModal');
+const closeDetail=document.getElementById('closeDetail');
+const modalImg=document.getElementById('modalImg');
+const modalNama=document.getElementById('modalNama');
+const modalDeskripsi=document.getElementById('modalDeskripsi');
+const modalHarga=document.getElementById('modalHarga');
+let produkDipilihIndex=null;
+
+function openDetail(i){
+  produkDipilihIndex = i;
+  const p = produkList[i];
+  modalImg.src=p.gambar;
+  modalNama.textContent=p.nama;
+  modalDeskripsi.textContent=p.deskripsi;
+  modalHarga.textContent=`Rp ${p.harga.toLocaleString('id-ID')}`;
+  detailModal.style.display='flex';
+}
+closeDetail.onclick=()=>{ detailModal.style.display='none'; };
+detailModal.addEventListener('click',(e)=>{
+  const inner = e.target.closest('.modal-inner');
+  if(!inner && e.target===detailModal){ /* blok: jangan tutup saat klik area gelap */ }
+});
+
+/* Nota */
+const notaModal=document.getElementById('notaModal');
+const closeNota=document.getElementById('closeNota');
+const notaImg=document.getElementById('notaImg');
+const notaNama=document.getElementById('notaNama');
+const notaHarga=document.getElementById('notaHarga');
+const notaContent=document.getElementById('notaContent');
+
+document.getElementById('btnDetail').addEventListener('click',()=>{
+  if(produkDipilihIndex===null) return;
+  const p = produkList[produkDipilihIndex];
+  notaImg.src=p.gambar;
+  notaNama.textContent=p.nama;
+  notaHarga.textContent=`Rp ${p.harga.toLocaleString('id-ID')}`;
+  // ✅ Render HANYA dari detailNota (hapus duplikat)
+  notaContent.innerHTML = p.detailNota || '<em>Detail tidak tersedia.</em>';
+  notaModal.style.display='flex';
+});
+closeNota.onclick=()=>{ notaModal.style.display='none'; };
+
+/* Cart */
+let keranjang=[];
+const cartBtnOpen=document.getElementById('btnOpenCart');
+const cartModal=document.getElementById('cartModal');
+const closeCart=document.getElementById('closeCart');
+const cartList=document.getElementById('cartList');
+const cartTotal=document.getElementById('cartTotal');
+const cartCount=document.getElementById('cart-count');
+
+document.getElementById('btnAddCart').addEventListener('click',()=>{
+  if(produkDipilihIndex===null) return;
+  const p = produkList[produkDipilihIndex];
+  const idx = keranjang.findIndex(it=>it.nama===p.nama);
+  if(idx>-1) keranjang[idx].qty+=1; else keranjang.push({nama:p.nama,harga:p.harga,qty:1});
+  updateCartUI();
+  showToast('Ditambahkan ke keranjang');
+});
+document.getElementById('btnOrder').addEventListener('click',()=>{
+  if(produkDipilihIndex===null) return;
+  const p = produkList[produkDipilihIndex];
+  const msg = `Halo Admin, saya ingin order:\n\n- ${p.nama}\n${p.deskripsi}\nHarga: Rp ${p.harga.toLocaleString('id-ID')}\n\nTerima kasih.`;
+  window.open(`https://wa.me/${nomorWA_owner}?text=${encodeURIComponent(msg)}`,'_blank');
+});
+
+cartBtnOpen.onclick=()=>{ cartModal.style.display='flex'; }
+closeCart.onclick=()=>{ cartModal.style.display='none'; }
+cartModal.addEventListener('click',(e)=>{
+  const inner = e.target.closest('.modal-inner');
+  if(!inner && e.target===cartModal){ /* blok: jangan tutup */ }
+});
+
+document.getElementById('btnClearCart').onclick=()=>{ keranjang=[]; updateCartUI(); };
+document.getElementById('btnSendWA').onclick=()=>{
+  if(keranjang.length===0){ showToast('Keranjang kosong'); return; }
+  let lines = keranjang.map(it=>`- ${it.nama} x${it.qty} @ Rp ${it.harga.toLocaleString('id-ID')}`).join('\n');
+  let total = keranjang.reduce((a,b)=>a+b.harga*b.qty,0);
+  const text = `Halo Admin, saya ingin order:\n\n${lines}\n\nTotal: Rp ${total.toLocaleString('id-ID')}`;
+  window.open(`https://wa.me/${nomorWA_owner}?text=${encodeURIComponent(text)}`,'_blank');
+};
+
+function updateCartUI(){
+  cartList.innerHTML='';
+  keranjang.forEach((it,i)=>{
+    const row=document.createElement('div');
+    row.className='item-row';
+    row.innerHTML=`
+      <div style="font-weight:700">${it.nama}</div>
+      <div class="qty">
+        <button data-i="${i}" data-a="-">−</button>
+        <span style="min-width:18px;text-align:center">${it.qty}</span>
+        <button data-i="${i}" data-a="+">+</button>
+      </div>`;
+    cartList.appendChild(row);
+  });
+  cartList.querySelectorAll('button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const i=+btn.getAttribute('data-i'); const a=btn.getAttribute('data-a');
+      if(a==='+') keranjang[i].qty++; else keranjang[i].qty=Math.max(1,keranjang[i].qty-1);
+      updateCartUI();
+    });
+  });
+  const total = keranjang.reduce((a,b)=>a+b.harga*b.qty,0);
+  cartTotal.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+  const count = keranjang.reduce((a,b)=>a+b.qty,0);
+  cartCount.textContent = count;
+}
+
+/* toast */
+function showToast(msg){
+  const t=document.createElement('div');
+  t.className='toast'; t.textContent=msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),2100);
+}
 </script>
 </body>
 </html>
