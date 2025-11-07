@@ -108,36 +108,35 @@ body.dark .drawer-close{background:#3a3a3a;color:#e5e7eb}
 .toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.85);color:#fff;padding:10px 18px;border-radius:12px;font-size:10px;font-weight:600;animation:fadein .3s,fadeout .3s 1.8s;z-index:999}
 @keyframes fadein{from{opacity:0;transform:translate(-50%,-60%)}to{opacity:1;transform:translate(-50%,-50%)}}
 @keyframes fadeout{from{opacity:1}to{opacity:0}}
-/* === FIX TOTAL LINK WARNA PUTIH & HILANGKAN WARNA BIRU === */
+/* === LINK DI MODAL PUTIH & BISA DIKLIK === */
 #notaModal a {
   color: #ffffff !important;
   text-decoration: underline !important;
   -webkit-text-fill-color: #ffffff !important;
 }
 
-#notaModal a:visited,
-#notaModal a:active,
+#notaModal a:hover,
 #notaModal a:focus,
-#notaModal a:hover {
-  color: #ffffff !important;
+#notaModal a:active {
+  color: #ffeb3b !important; /* kuning pas disentuh */
   text-decoration: underline !important;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
 }
 
-/* === PAKSA TAMPIL PUTIH UNTUK SEGALA TEKS === */
+/* === SEMUA TEKS DI MODAL PUTIH === */
+#notaModal, 
 #notaModal * {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
 
-/* === KHUSUS UNTUK BAGIAN JUDUL (BIAR TIDAK TERLIHAT KAYA LINK) === */
+/* === HANYA UNTUK JUDUL TERTENTU BIAR TIDAK KAYA LINK === */
 #notaModal .center-label,
-#notaModal .nota-section,
-#notaModal .judul-section {
+#notaModal .nota-section {
   color: #ffffff !important;
   text-decoration: none !important;
-  pointer-events: none !important;
+  pointer-events: auto !important; /* <— biar elemen lain tetap bisa diklik */
   cursor: default !important;
 }
 </style>
