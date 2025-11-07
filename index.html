@@ -87,8 +87,10 @@ body.dark .drawer-close{background:#3a3a3a;color:#e5e7eb}
 .total{font-weight:900;color:#d32f2f;margin:12px 0}
 
 /* NOTA */
-#notaModal{background:rgba(0,0,0,.6);display:none;position:fixed;inset:0;z-index:9999;justify-content:center;align-items:center;padding:100px 15px;overflow-y:auto;}
-.nota-sheet{background:var(--notePurple);color:#fff;border-radius:22px;padding:26px;max-width:90%;width:90%;margin:auto;overflow-y:auto;max-height:75vh;position:relative;text-align:center;font-size:12px;line-height:1.4;}
+#notaModal
+{background:rgba(0,0,0,.6);display: none;position: fixed;inset: 0;z-index: 9999;justify-content: center;align-items: center;padding: 100px 15px;overflow-y: auto;}
+.nota-sheet{background:var(--notePurple);color:#fff;border-radius:22px;padding:26px;max-width:90%;width:90%;margin:auto;overflow-y:auto;max-height:75vh;position:relative;text-align:center}
+.nota-sheet{font-size: 12px;line-height: 1.4;}
 .nota-close{position:absolute;top:10px;right:10px;background:#e0e0e0;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer}
 .nota-title{margin:8px 0 4px;font-weight:800}
 .nota-price{font-weight:900;margin:6px 0 10px}
@@ -99,46 +101,69 @@ body.dark .drawer-close{background:#3a3a3a;color:#e5e7eb}
 .app-icons{display:flex;justify-content:center;align-items:center;gap:14px;margin:6px 0 12px}
 .app-icons a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
 .app-icons img{width:46px;height:46px;border-radius:10px;display:block}
-body.modal-open{overflow-y:hidden;height:100%}
+ body.modal-open{overflow-y: hidden;height: 100%;}
+/* FOOTER */
+.footer{background:var(--primary);color:#fff;text-align:center;font-size:12px;padding:10px 0}
+/* TOAST */
+.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.85);color:#fff;padding:10px 18px;border-radius:12px;font-size:10px;font-weight:600;animation:fadein .3s,fadeout .3s 1.8s;z-index:999}
+@keyframes fadein{from{opacity:0;transform:translate(-50%,-60%)}to{opacity:1;transform:translate(-50%,-50%)}}
+@keyframes fadeout{from{opacity:1}to{opacity:0}}
+.nota-ul a {
+  color: #FFFFFF !important; /* Warna teks link (kuning terang) */
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
 
-/* === FIX KHUSUS LINK & WARNA === */
+.nota-ul a:hover {
+  color: #0C12D0 !important; /* Saat disentuh berubah jadi putih */
+}
+/* Perbaikan warna bagian judul dan link */
 .center-label {
-  color:#ffffff!important;
-  font-weight:800;
-  text-align:center;
-  text-decoration:none!important;
-  pointer-events:none!important;
+  color: #ffffff !important; /* Biar "Khusus iPhone" & "Khusus Android" jadi putih */
+  font-weight: 800;
+  text-align: center;
 }
+
+.nota-section b, .nota-section strong, .nota-section {
+  color: #ffffff !important; /* Biar "Tutorial Cara Pakai :" putih */
+}
+
+.nota-ul a {
+  color: #ffeb3b !important; /* Warna "Klik di sini" kuning */
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nota-ul a:hover {
+  color: #ffffff !important; /* Saat disentuh jadi putih */
+}
+.center-label {
+  color: #ffffff !important;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none !important;
+  pointer-events: none;
+}
+
 .nota-section {
-  color:#ffffff!important;
-  font-weight:800;
-  text-decoration:none!important;
-  pointer-events:none!important;
+  color: #ffffff !important;
+  font-weight: 800;
+  text-decoration: none !important;
+  pointer-events: none;
 }
+
 .nota-ul a,
 .nota-ul a:visited,
 .nota-ul a:active {
-  color:#ffeb3b!important;
-  text-decoration:underline;
-  font-weight:600;
-  pointer-events:auto!important;
-  transition:color .3s ease;
+  color: #ffeb3b !important; /* kuning cerah */
+  text-decoration: underline;
 }
+
 .nota-ul a:hover {
-  color:#ffffff!important;
+  color: #ffffff !important; /* putih saat disentuh */
 }
-.nota-ul a:focus {
-  color:#ffeb3b!important;
-  outline:none!important;
-}
-
-/* FOOTER */
-.footer{background:var(--primary);color:#fff;text-align:center;font-size:12px;padding:10px 0}
-
-/* TOAST */
-.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.85);color:#fff;padding:10px 18px;border-radius:12px;font-size:10px;font-weight:600;animation:fadein .25s ease,fadeout .25s ease 1.5s;z-index:999}
-@keyframes fadein{from{opacity:0;transform:translate(-50%,-60%)}to{opacity:1;transform:translate(-50%,-50%)}}
-@keyframes fadeout{from{opacity:1}to{opacity:0}}
 </style>
 </head>
 <body>
