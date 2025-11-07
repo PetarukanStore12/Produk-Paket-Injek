@@ -109,16 +109,25 @@ body.dark .drawer-close{background:#3a3a3a;color:#e5e7eb}
 @keyframes fadein{from{opacity:0;transform:translate(-50%,-60%)}to{opacity:1;transform:translate(-50%,-50%)}}
 @keyframes fadeout{from{opacity:1}to{opacity:0}}
 /* ===== FIX LINK WARNA DI MODAL ===== */
-#notaModal a,
-#notaModal a:link,
-#notaModal a:visited,
-#notaModal a:focus,
-#notaModal a:active,
-#notaModal a:hover {
+#notaModal a[href],
+#notaModal a[href]:link,
+#notaModal a[href]:visited,
+#notaModal a[href]:focus,
+#notaModal a[href]:active,
+#notaModal a[href]:hover {
   color: #ffffff !important;
   text-decoration: underline;
-  -webkit-text-fill-color: #ffffff !important; /* tambahan agar Chrome mobile patuh */
+  -webkit-text-fill-color: #ffffff !important;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* ===== Non-link judul tetap gaya biasa ===== */
+#notaModal .center-label,
+#notaModal .judul-section,
+#notaModal b,
+#notaModal strong {
+  color: #ffffff !important;
+  text-decoration: none !important;
 }
 </style>
 </head>
