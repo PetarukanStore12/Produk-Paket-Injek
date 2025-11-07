@@ -87,8 +87,10 @@ body.dark .drawer-close{background:#3a3a3a;color:#e5e7eb}
 .total{font-weight:900;color:#d32f2f;margin:12px 0}
 
 /* NOTA */
-#notaModal{background:rgba(0,0,0,.6);display: none;position: fixed;inset: 0;z-index: 180;justify-content: center;align-items: center;padding: 100px 15px;overflow-y: auto;
+#notaModal
+{background:rgba(0,0,0,.6);display: none;position: fixed;inset: 0;z-index: 9999;justify-content: center;align-items: center;padding: 100px 15px;overflow-y: auto;}
 .nota-sheet{background:var(--notePurple);color:#fff;border-radius:22px;padding:26px;max-width:90%;width:90%;margin:auto;overflow-y:auto;max-height:75vh;position:relative;text-align:center}
+.nota-sheet{font-size: 12px;line-height: 1.4;}
 .nota-close{position:absolute;top:10px;right:10px;background:#e0e0e0;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer}
 .nota-title{margin:8px 0 4px;font-weight:800}
 .nota-price{font-weight:900;margin:6px 0 10px}
@@ -99,12 +101,11 @@ body.dark .drawer-close{background:#3a3a3a;color:#e5e7eb}
 .app-icons{display:flex;justify-content:center;align-items:center;gap:14px;margin:6px 0 12px}
 .app-icons a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
 .app-icons img{width:46px;height:46px;border-radius:10px;display:block}
-
+ body.modal-open{overflow-y: hidden;height: 100%;}
 /* FOOTER */
 .footer{background:var(--primary);color:#fff;text-align:center;font-size:12px;padding:10px 0}
-
 /* TOAST */
-.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.85);color:#fff;padding:10px 18px;border-radius:12px;font-size:14px;font-weight:600;animation:fadein .3s,fadeout .3s 1.8s;z-index:999}
+.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.85);color:#fff;padding:10px 18px;border-radius:12px;font-size:10px;font-weight:600;animation:fadein .3s,fadeout .3s 1.8s;z-index:999}
 @keyframes fadein{from{opacity:0;transform:translate(-50%,-60%)}to{opacity:1;transform:translate(-50%,-50%)}}
 @keyframes fadeout{from{opacity:1}to{opacity:0}}
 </style>
@@ -1054,7 +1055,7 @@ document.getElementById('btnAddCart').addEventListener('click',()=>{
   const idx = keranjang.findIndex(it=>it.nama===p.nama);
   if(idx>-1) keranjang[idx].qty+=1; else keranjang.push({nama:p.nama,harga:p.harga,qty:1});
   updateCartUI();
-  showToast('Ditambahkan ke keranjang');
+  showToast('✅ Ditambahkan ke keranjang');
 });
 document.getElementById('btnOrder').addEventListener('click',()=>{
   if(produkDipilihIndex===null) return;
