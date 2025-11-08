@@ -119,29 +119,13 @@ body.dark .drawer-close{background:#3a3a3a;color:#e5e7eb}
   color: #0C12D0 !important; /* pas disentuh berubah jadi putih */
 }
 
-/* v9: ensure headings are NOT links/underlined, and only 'Klik di sini' appears as link */
-.nota-title-center, .center-label { color:#fff !important; font-weight:800 !important; text-decoration:none !important; }
-.nota-ul { color:#fff !important; }
-.nota-ul a { color:#ffeb3b !important; text-decoration: underline !important; font-weight:600 !important; }
-
-
-/* FINAL v10 FIX */
-.center-label {
+/* FINAL FIX v7 */
+.center-label, .nota-title-center {
   color:#fff !important;
   font-weight:800 !important;
   text-decoration:none !important;
   pointer-events:none !important;
   cursor:default !important;
-}
-.nota-title-center {
-  color:#fff !important;
-  font-weight:800 !important;
-  text-decoration:none !important;
-  pointer-events:none !important;
-  cursor:default !important;
-}
-.nota-ul {
-  color:#fff !important;
 }
 .nota-ul a {
   color:#ffeb3b !important;
@@ -149,8 +133,9 @@ body.dark .drawer-close{background:#3a3a3a;color:#e5e7eb}
   font-weight:600 !important;
 }
 .nota-ul a.nota-link {
-  color:#ffeb3b !important;
   text-decoration:underline !important;
+  pointer-events:auto !important;
+  cursor:pointer !important;
 }
 
 </style>
@@ -245,41 +230,37 @@ body.dark .drawer-close{background:#3a3a3a;color:#e5e7eb}
     <!-- HANYA SATU BLOK DINAMIS (tidak ada duplikat statis) -->
     <div id="notaContent" class="nota-content"></div>
 
-   <div class="center-label">📥 SILAHKAN DOWNLOAD APK INJEK :</div>
-
-  <div class="center-label">🔹 Khusus Android</div>
-  <div class="app-icons">
-    <a href="https://play.google.com/store/apps/details?id=xyz.easypro.httpcustom" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-httpcustom.png" alt="HTTP Custom"></a>
-    <a href="https://play.google.com/store/apps/details?id=net.darktunnel.app" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-darktunnel.png" alt="DarkTunnel"></a>
-    <a href="https://play.google.com/store/apps/details?id=io.nekohasekai.sfa" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logosingbox-1.png" alt="SingBox"></a>
-    <a href="#"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-v2ray-1.png" alt="V2Ray"></a>
-  </div>
-
-  <div class="app-icons">
-    <a href="https://play.google.com/store/apps/details?id=app.hiddify.com" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-hiddify.png" alt="Hiddify"></a>
-    <a href="https://play.google.com/store/apps/details?id=com.v2cross.proxy" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-shadorocket.png" alt="Shadowrocket"></a>
-    <a href="#"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-openclash.png" alt="OpenClash"></a>
-    <a href="#"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-kentangclash.png" alt="KentangClash"></a>
-  </div>
-
-  <!-- KHUSUS IPHONE (TIDAK LINK) -->
-  <div class="center-label">🔹 Khusus iPhone</div>
-  <div class="app-icons">
-    <img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logosingbox-1.png" alt="SingBox iOS">
-  </div>
-
-  <!-- TUTORIAL (TIDAK LINK) -->
-  <div class="nota-title-center">💡 TUTORIAL CARA PAKAI :</div>
-  <ul class="nota-ul">
-    <li><span class="nota-label">Menggunakan HTTP Custom :</span> <a class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
-    <li><span class="nota-label">Menggunakan DarkTunnel :</span> <a class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
-    <li><span class="nota-label">Menggunakan SingBox :</span> <a class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
-    <li><span class="nota-label">Menggunakan V2Ray :</span> <a class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
-    <li><span class="nota-label">Menggunakan Hiddify :</span> <a class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
-    <li><span class="nota-label">Menggunakan Shadowrocket :</span> <a class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
-    <li><span class="nota-label">Menggunakan OpenClash :</span> <a class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
-    <li><span class="nota-label">Menggunakan KentangClash :</span> <a class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
-  </ul>
+    <div class="center-label">📥 SILAHKAN DOWNLOAD APK INJEK :</div>
+    <div class="center-label">🔹 Khusus Android</div>
+    <div class="app-icons">
+      <a href="https://play.google.com/store/apps/details?id=xyz.easypro.httpcustom" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-httpcustom.png" alt="HC" style="width:65px;height:60px;"</a>
+      <a href="https://play.google.com/store/apps/details?id=net.darktunnel.app" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-darktunnel.png" alt="Dark" style="width:55px;height:60px;"</a>
+      <a href="https://play.google.com/store/apps/details?id=io.nekohasekai.sfa" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logosingbox-1.png" alt="Dark" style="width:65px;height:60px;"</a>
+      <a href="#" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-v2ray-1.png" alt="Dark" style="width:50px;height:50px;" </a>
+    </div>
+     <div class="app-icons">
+  <a href="https://play.google.com/store/apps/details?id=app.hiddify.com" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-hiddify.png" alt="HC" style="width:50px;height:50px;" </a>
+    <a href="https://play.google.com/store/apps/details?id=com.v2cross.proxy" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-shadorocket.png" alt="Dark" style="width:55px;height:50px;" </a>
+      <a href="#" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-openclash.png" alt="Dark" style="width:50px;height:50px;" </a>
+        <a href="#" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logo-kentangclash.png" alt="Dark" style="width:50px;height:50px;" </a>
+    </div>
+    <div class="center-label">🔹 Khusus iPhone</div>
+    <div class="app-icons">
+      <a href="https://play.google.com/store/apps/details?id=net.darktunnel.app" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logosingbox-1.png" alt="Dark" style="width:65px;height:60px;"</a>
+    </div>
+    <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
+      <div class="nota-title-center">💡 TUTORIAL CARA PAKAI :</div>
+      <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
+  <li style="font-weight: 400;">Menggunakan HTTP Custom : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a>
+  </li>
+    <li style="font-weight: 400;">Menggunakan DarkTunnel : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a>
+    </li>
+    <li style="font-weight: 400;">Menggunakan SingBox : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan V2Ray : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan Hiddify : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan Shadorocket : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan OpenClash : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan KentangClash : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
     Jika Masih Bingung,Bisa Hubungi Admin ✅
     </div>
     <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:600;">
@@ -293,11 +274,9 @@ body.dark .drawer-close{background:#3a3a3a;color:#e5e7eb}
    <li>Jika Stok Ready, Langsung Klik Order / Tambah Keranjang Lalu Kirim ke Whatsapp Admin.</li>
    <li>Jam Kerja : 07:00 - 22.30 WIB</li>
    <li>Payment : DANA, QRIS, BANK, DLL</li>
- <li>🥳 Yuk Gasken Juragan!!</li>
-</ul>
-</div> <!-- Tutup nota-section -->
-</div> <!-- Tutup nota-sheet -->
-</div> <!-- Tutup modal notaModal -->
+  🥳 Yuk Gasken Juragan!! 
+  </div>
+</div>
 
 <!-- FOOTER -->
 <div class="footer">© 2025 Petarukan Store | Kuota Murah, Aman & Terpercaya</div>
@@ -1129,7 +1108,7 @@ document.getElementById('btnSendWA').onclick=()=>{
   if(keranjang.length===0){ showToast('Keranjang kosong'); return; }
   let lines = keranjang.map(it=>`- ${it.nama} x${it.qty} @ Rp ${it.harga.toLocaleString('id-ID')}`).join('\n');
   let total = keranjang.reduce((a,b)=>a+b.harga*b.qty,0);
-  const text = `Halo Admin, saya ingin order :\n\n${lines}\n\n💰 Total: Rp ${total.toLocaleString('id-ID')}`;
+  const text = `Halo Admin, saya ingin order :\n\n${lines}\n\n💰Total: Rp ${total.toLocaleString('id-ID')}`;
   window.open(`https://wa.me/${nomorWA_owner}?text=${encodeURIComponent(text)}`,'_blank');
 };
 
