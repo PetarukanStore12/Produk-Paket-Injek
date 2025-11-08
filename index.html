@@ -119,14 +119,11 @@ body.dark .drawer-close{background:#3a3a3a;color:#e5e7eb}
   color: #0C12D0 !important; /* pas disentuh berubah jadi putih */
 }
 
-/* fix title styling */
-.nota-title-center{margin:18px 0 8px;font-weight:800;text-align:center;color:#fff;}
-
-
-/* force link behavior in nota list */
-.nota-ul a{ color:#ffeb3b !important; text-decoration:none !important; font-weight:600; }
-.nota-ul a.nota-link{ text-decoration:underline !important; }
-.center-label{ font-weight:800; text-align:center; color:#fff; text-decoration:none !important; }
+/* Strong override for nota links and titles to prevent browser default blue/underline */
+.nota-title-center, .center-label { color: #fff !important; font-weight:800 !important; text-decoration:none !important; }
+.nota-ul { color: #fff !important; }
+.nota-ul a { color: #fff !important; text-decoration: none !important; font-weight:600 !important; pointer-events: none !important; cursor: default !important; }
+.nota-ul a.nota-link { color: #ffeb3b !important; text-decoration: underline !important; pointer-events: auto !important; cursor: pointer !important; }
 
 </style>
 </head>
@@ -239,18 +236,18 @@ body.dark .drawer-close{background:#3a3a3a;color:#e5e7eb}
       <a href="https://play.google.com/store/apps/details?id=net.darktunnel.app" target="_blank"><img src="https://petarukanstoreimage.wordpress.com/wp-content/uploads/2025/11/logosingbox-1.png" alt="Dark" style="width:65px;height:60px;"</a>
     </div>
     <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:800;">
-      <div class="nota-title-center">💡 TUTORIAL CARA PAKAI :</div>
+<div class="nota-title-center">💡 TUTORIAL CARA PAKAI :</div>
       <ul class="nota-ul" style="text-align:left; margin:6px 0 16px 0; padding-left:18px; line-height:1.6;">
-  <li style="font-weight: 400;">Menggunakan HTTP Custom : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a>
+  <li style="font-weight: 400;">Menggunakan HTTP Custom : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a>
   </li>
-    <li style="font-weight: 400;">Menggunakan DarkTunnel : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a>
+    <li style="font-weight: 400;">Menggunakan DarkTunnel : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a>
     </li>
-    <li style="font-weight: 400;">Menggunakan SingBox : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
-    <li style="font-weight: 400;">Menggunakan V2Ray : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
-    <li style="font-weight: 400;">Menggunakan Hiddify : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
-    <li style="font-weight: 400;">Menggunakan Shadorocket : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
-    <li style="font-weight: 400;">Menggunakan OpenClash : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
-    <li style="font-weight: 400;">Menggunakan KentangClash : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan SingBox : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan V2Ray : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan Hiddify : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan Shadorocket : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan OpenClash : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
+    <li style="font-weight: 400;">Menggunakan KentangClash : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
     Jika Masih Bingung,Bisa Hubungi Admin ✅
     </div>
     <div class="nota-section" style="text-align:left; margin-top:18px; font-weight:600;">
@@ -299,7 +296,7 @@ const produkList = [
          <li>Total Kuota 2 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
   },
@@ -319,7 +316,7 @@ const produkList = [
          <li>Total Kuota 5 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -339,7 +336,7 @@ const produkList = [
          <li>Total Kuota 15 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -359,7 +356,7 @@ const produkList = [
          <li>Total Kuota 4000 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -378,7 +375,7 @@ const produkList = [
          <li>Perlu OTP</li>
          <li>Total Kuota ± 350 GB</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -397,7 +394,7 @@ const produkList = [
          <li>Perlu OTP</li>
          <li>Total Kuota ± 450 GB</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -416,7 +413,7 @@ const produkList = [
          <li>Perlu OTP</li>
          <li>Total Kuota ± 500 GB</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -435,7 +432,7 @@ const produkList = [
          <li>Perlu OTP</li>
          <li>Total Kuota ± 500 GB</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -453,7 +450,7 @@ const produkList = [
          <li>Masa Aktif 365 Hari</li>
          <li>Perlu OTP</li>
          <li>Proses Cepat</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -472,7 +469,7 @@ const produkList = [
          <li>Perlu OTP</li>
          <li>Total Kuota ± 450 GB</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -492,7 +489,7 @@ const produkList = [
          <li>Total Kuota 2 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -512,7 +509,7 @@ const produkList = [
          <li>Total Kuota 5 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -532,7 +529,7 @@ const produkList = [
          <li>Total Kuota 15 GB</li>
          <li>Suport Semua Area</>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -552,7 +549,7 @@ const produkList = [
          <li>Total Kuota 2 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -572,7 +569,7 @@ const produkList = [
          <li>Total Kuota 5 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -592,7 +589,7 @@ const produkList = [
          <li>Total Kuota 15 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -612,7 +609,7 @@ const produkList = [
          <li>Total Kuota 12 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -632,7 +629,7 @@ const produkList = [
          <li>Total Kuota 5 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -652,7 +649,7 @@ const produkList = [
          <li>Total Kuota 3 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -672,7 +669,7 @@ const produkList = [
          <li>Total Kuota 2 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -692,7 +689,7 @@ const produkList = [
          <li>Total Kuota 5 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -712,7 +709,7 @@ const produkList = [
          <li>Total Kuota 3 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -731,7 +728,7 @@ const produkList = [
          <li>Perlu OTP</li>
          <li>Total Kuota 15 GB</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -750,7 +747,7 @@ const produkList = [
          <li>Perlu OTP</li>
          <li>Total Kuota 15 GB</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -769,7 +766,7 @@ const produkList = [
          <li>Perlu OTP</li>
          <li>Total Kuota 15 GB</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -788,7 +785,7 @@ const produkList = [
          <li>Perlu OTP</li>
          <li>Total Kuota 15 GB</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -807,7 +804,7 @@ const produkList = [
          <li>Perlu OTP</li>
          <li>Total Kuota 15 GB</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -826,7 +823,7 @@ const produkList = [
          <li>Perlu OTP</li>
          <li>Total Kuota 15 GB</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -846,7 +843,7 @@ const produkList = [
          <li>Total Kuota 11 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -866,7 +863,7 @@ const produkList = [
          <li>Total Kuota 2 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -886,7 +883,7 @@ const produkList = [
          <li>Total Kuota 22 GB</li>
          <li>Suport Semua Area</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/produk-ready.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -905,7 +902,7 @@ const produkList = [
          <li>Perlu OTP</li>
          <li>Total Kuota ± 450 GB</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -924,7 +921,7 @@ const produkList = [
          <li>Perlu OTP</li>
          <li>Total Kuota ± 450 GB</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -943,7 +940,7 @@ const produkList = [
          <li>Perlu OTP</li>
          <li>Total Kuota ± 450 GB</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -962,7 +959,7 @@ const produkList = [
          <li>Perlu OTP</li>
          <li>Total Kuota ± 450 GB</li>
          <li>Menggunakan Aplikasi Injek</li
-         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;">Klik di sini</a></li>
+         <li>🛒Cek Stok : <a href="https://petarukanstore12.github.io/kumpulan-file-link-online/gangguan.html" target="_blank" style="color:#fff;text-decoration:underline;" class="nota-link" href="https://petarukanstore12.github.io/kumpulan-file-link-online/video_tutorial_comingsoon.html" target="_blank">Klik di sini</a></li>
  </ul>
 `,
 },
@@ -1138,4 +1135,4 @@ function showToast(msg){
 }
 </script>
 </body>
-  </html>
+</html>
